@@ -1,0 +1,285 @@
+/* ==========================================================
+   PORTFÓLIO - Natam dos Santos
+   Tema escuro e moderno, sem bibliotecas externas.
+   Para mudar o visual, altere primeiro as variáveis abaixo.
+   ========================================================== */
+
+/* 1. CORES E MEDIDAS (mude aqui para trocar o visual todo) */
+:root {
+  --fundo: #0f0f1a;          /* fundo da página */
+  --superficie: #1a1a2e;     /* fundo dos cartões */
+  --borda: #2f2f4d;          /* linhas e bordas */
+  --texto: #ececf6;          /* texto principal */
+  --texto-suave: #b8b8d0;    /* texto secundário */
+  --azul: #5a67d8;           /* cor de destaque 1 */
+  --roxo: #6b46c1;           /* cor de destaque 2 */
+  --destaque-claro: #a5b4fc; /* links e foco (boa leitura no escuro) */
+  --brilho: rgba(102, 126, 234, 0.18); /* brilho suave dos cartões */
+  --largura-maxima: 1040px;
+  --raio: 14px;
+}
+
+/* 2. BASE */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+}
+
+h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); }
+h2 { font-size: 1.9rem; margin-bottom: 1.2rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+
+p { margin: 0 0 1rem; max-width: 65ch; }
+
+a { color: var(--destaque-claro); }
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 3. FOCO VISÍVEL (navegação por teclado) */
+a:focus-visible {
+  outline: 3px solid var(--destaque-claro);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Atalho "Pular para o conteúdo": só aparece ao usar o teclado */
+.pular-menu {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--destaque-claro);
+  color: var(--fundo);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  z-index: 20;
+}
+.pular-menu:focus {
+  top: 1rem;
+}
+
+/* 4. CABEÇALHO E MENU */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+}
+
+.logo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.2rem 0.1rem;
+  border-bottom: 2px solid transparent;
+}
+.menu a:hover {
+  border-bottom-color: #fff;
+}
+.cabecalho a:focus-visible {
+  outline-color: #fff;
+}
+
+/* 5. SEÇÕES */
+main {
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 3.5rem 0 1rem;
+  scroll-margin-top: 5rem; /* evita o menu fixo cobrir o título */
+}
+
+/* Apresentação */
+.apresentacao {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+.titulo-profissional {
+  font-size: 1.3rem;
+  color: var(--destaque-claro);
+  font-weight: 600;
+}
+
+/* 6. BOTÕES */
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  max-width: none;
+}
+
+.botao {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+.botao:hover {
+  filter: brightness(1.15);
+}
+
+.botao-secundario {
+  background: transparent;
+  border-color: var(--destaque-claro);
+  color: var(--destaque-claro);
+}
+.botao-secundario:hover {
+  background: rgba(165, 180, 252, 0.12);
+  filter: none;
+}
+
+/* 7. LISTAS E ITENS */
+.lista-simples {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+/* Lista em forma de etiquetas (competências técnicas) */
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+}
+.etiquetas li {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+}
+
+.item {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+}
+.item p,
+.item ul {
+  margin-bottom: 0;
+}
+
+/* 8. CARTÕES (competências e projetos) */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.3rem;
+}
+
+.cartao {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.3rem;
+  box-shadow: 0 8px 28px var(--brilho);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cartao:hover {
+  border-color: var(--azul);
+  box-shadow: 0 10px 34px rgba(118, 75, 162, 0.35);
+}
+.cartao p:last-child {
+  margin-bottom: 0;
+}
+
+/* Cartões de projeto: imagem no topo */
+.projeto img,
+.capa-vazia {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--borda);
+}
+
+/* Bloco usado quando o projeto ainda não tem imagem */
+.capa-vazia {
+  background: linear-gradient(135deg, #1f1f3d, #3a2a63);
+}
+
+.tecnologias {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.projeto .botao {
+  margin-top: 0.6rem;
+}
+
+/* 9. RODAPÉ */
+.rodape {
+  margin-top: 4rem;
+  padding: 1.6rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--borda);
+  color: var(--texto-suave);
+}
+.rodape p {
+  margin: 0 auto;
+}
+
+/* 10. CELULAR E TELAS PEQUENAS */
+@media (max-width: 600px) {
+  body { font-size: 1rem; }
+  .cabecalho { padding: 0.8rem 1rem; }
+  main { padding: 0 1rem; }
+  .apresentacao { padding-top: 3rem; }
+  h2 { font-size: 1.6rem; }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cartao { transition: none; }
+}
